@@ -1,0 +1,65 @@
+<div class="row" ng-controller='TaskDetailsController'>
+  <h2>Edit Task</h2>
+	<form ng-submit="edit()">
+
+      <div class="row" >
+          <div class="small-6 columns">
+            Name : <input ng-model="edittask.name" ng-value= "task.name" type="text" name = "name" required>
+          </div>
+          
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+            Description : <input ng-model="edittask.desc" ng-value = "task.description" type="text" placeholder="Description"  name = "desc">
+          </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns">
+          Current Deadline : {{task.deadline | date : 'yyyy-MM-dd'}}
+           <br><br>
+           Chhange to Deadline:
+          <datepicker date-format="yyyy-MM-dd">
+           <input ng-model="edittask.date" type="date"/>
+          </datepicker>
+        </div>
+        <div class="small-6 columns">
+
+           Current Assigned User : {{task.assignedUserName}}
+           <br><br>
+           Change to:
+          <select ng-model="edittask.assignuser">
+            <option value="unassigned," "">unassigned</option>
+            <option ng-repeat="user in users" value="{{user.name}},{{user._id}}">{{user.name}}</option>
+          </select> 
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-6 columns">
+          Current Status of Completion : {{task.completed}}
+
+          <br><br>
+          Change status to:
+          <fieldset>
+                  <input  ng-model="edittask.completed" type="radio"  value="true"  name="completed"><label>Completed</label>
+                    <input  ng-model="edittask.completed" type="radio"  value="false" name="completed"><label>Not Completed</label>
+                        
+
+        </fieldset>
+        </div>
+      </div>
+
+    <div class="text-center">
+      <button class="button tiny info">Edit TASK</button>
+    </div>
+      
+    
+
+  </form>
+
+  <div class="row text-center">
+    <span id="message">
+      
+    </span>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+// Add any custom Sass & CSS here
+.row h1{
+	background: lightblue;
+}
+
+#userfield, #taskfield, .row h2{
+	background: lightgray;
+}
+
+#options{
+	font-size: 20px;
+}
+
+.list ul {
+	 list-style-type: none;
+}
+
+.list ul .row{
+	border-bottom: 1px solid green;
+	margin-bottom: 15px;
+	font-size: 20px;
+
+}
+
+#details .row{
+	font-size: 25px;
+	font-weight: bold;
+	border-bottom: 2px solid lightgray;
+}
+
+#completed .row{
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 2px solid lightgray;
+}
+
+small {
+	color:red;
+	font-weight: bold;
+}

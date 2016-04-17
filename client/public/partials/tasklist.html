@@ -1,0 +1,63 @@
+<div  ng-controller='TaskListController'>
+<div id = "taskfield" class="row">
+	<div class="small-8 columns"><h2>Task List</h2></div>
+	<div class="small-4 columns"><button type="button" class="success button" ng-click="move_to_add()">Add task</button></div>
+</div>
+<div class="row optionfield">
+	
+	<button id = "Pending" type="button" class="button" ng-click="call_pending()">Pending</button>
+	<button id = "Completed" type="button" class="button" ng-click="call_completed()">Completed</button>
+	<button id = "All" type="button" class="success button" ng-click="call_all()">All</button>
+</div>
+<div class="row">	
+ <div class="small-6 small-centered columns">
+                 <label>Sort By
+                     <select class="form-control" ng-change="unitChanged()" ng-model="data.unit">
+			         <option ng-selected="data.unit == item.id" ng-repeat="item in units" ng-value="item.id">{{item.label}}</option>
+
+
+			 		   </select>
+                 </label>
+                  </div>
+
+             
+                  <div class="small-6 small-centered columns">
+                 	<fieldset>
+                 	<input  ng-model="reverse" type="radio"  value="1"  ng-change="unitChanged()" name="sortorder" id="ascd" ng-checked="true" ><label>ascending</label>
+                    <input  ng-model="reverse" type="radio"  value="-1" ng-change="unitChanged()" name="sortorder" id="desd"><label>descending</label>
+                        
+
+                 	</fieldset>
+                     
+             
+                   
+                    </div>
+
+</div>
+
+            
+
+<div class="row">
+	<div class="small-5 columns"><button class="secondary button" ng-click="movetoprev()">Prev</button></div>
+	<div class="small-5 columns"><button class="secondary button" ng-click="movetonext()">Next</button></div>
+</div>
+<div class="list">	
+<div class="row">
+	<div class="small-3 columns">Name</div>
+	<div class="small-3 columns">Deadline</div>
+	<div class="small-3 columns">AssignedUser</div>
+	<div class="small-3 columns">Delete</div>
+</div>	
+	<ul>
+		<li ng-repeat="task in tasks">
+			<div class="row">
+				<div class="small-3 columns"><a ng-click="movetotaskdetails(task._id)">{{task.name}}</a></div>
+				<div class="small-3 columns">{{ task.deadline | date : 'yyyy-MM-dd'}}</div>
+				<div class="class small-3 columns">Assinged {{task.assignedUserName}}</div>
+				<div class="small-3 columns"><button type="button" class="alert button" ng-click="delete_task(task._id)">Delete</button></div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+</div>

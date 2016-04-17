@@ -1,0 +1,51 @@
+<div id ="details" class="row" ng-controller='UserListController'>
+  <h2>User Profile</h2>
+	
+  <div ng-repeat= "user in users | filter:{email: useremail}">
+    <div class="row">
+       <div class="small-6 columns">Name : {{user.name}}</div>
+     <div class="small-6 columns">Email : {{user.email}}</div>
+    </div>
+   
+  <div class="row text-center">
+    <h3>Pending Task</h3>
+  </div>
+
+  <div class="row" ng-repeat="taskid in user.pendingTasks track by $index">
+    <div ng-repeat = "task in tasks | filter:{_id: taskid}">
+           <div class="small-4 columns">
+          <a href="#/tasklist/{{task._id}}">{{task.name}} </a>
+        </div>
+        <div class="small-4 columns">
+         {{ task.deadline | date : 'yyyy-MM-dd'}}
+        </div>
+        <div class="small-4 columns">
+          <button class="secondary hollow button" ng-click="movetoCompleted(taskid, task, user)">Completed</button>
+        </div>
+    </div>
+   
+
+  </div>
+
+  <div class="row text-center">
+    <button class="hollow button" ng-click="completed_div = !completed_div">Show Completed</button>
+  </div>
+  
+    <div id="completed" ng-show="completed_div">
+      <div class="row" ng-repeat = "task in tasks | filter:{assignedUser : user._id , completed : true}">
+          <div class="small-4 columns">
+          <a href="#/tasklist/{{task._id}}">{{task.name}} </a>
+        </div>
+        <div class="small-4 columns">
+         {{ task.deadline | date : 'yyyy-MM-dd'}}
+        </div>
+        <div class="small-4 columns">
+          <button type="button" class="alert button">Delete</button>
+        </div>
+       
+      </div>
+        
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+<div class="row" ng-controller='TaskListController'>
+  <h2>Add Task</h2>
+	<form  ng-submit="add_task()">
+	  <div class="row" >
+          <div class="small-6 columns">
+            Name :  <small>*</small><input ng-model="newtask.name" type="text" placeholder="Name" name = "name" required>
+          </div>
+          <div class="small-6 columns">
+            Description : <input ng-model="newtask.desc" type="text" placeholder="Description" name = "desc">
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="small-6 columns">
+           Deadline:  <small>*</small>
+          <datepicker date-format="yyyy-MM-dd">
+           <input ng-model="newtask.date" type="date" required/>
+          </datepicker>
+        </div>
+        <div class="small-6 columns">
+           Assigned User :
+          <select ng-model="newtask.assignuser">
+            <option value="unassigned," "">unassigned</option>
+            <option ng-repeat="user in users" value="{{user.name}},{{user._id}}">{{user.name}}</option>
+          </select> 
+        </div>
+      </div>
+
+    <div class="text-center">
+      <button class="button tiny info">ADD TASK</button>
+    </div>
+
+    
+
+  </form>
+
+  <div class="row text-center">
+    <span id="message">
+      
+    </span>
+  </div>
+</div>

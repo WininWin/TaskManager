@@ -1,0 +1,24 @@
+<div id ="details" class="row" ng-controller='TaskDetailsController'>
+  <h2>Task Detail</h2>
+	
+  <div>
+    <div class="row"><div class="small-3 small-offset-9 columns"><button class="success hollow button" ng-click="edit_task(task._id)">Edit Task</button></div></div>
+    <div class="row">
+       <div class="small-12 columns">Task Name : {{task.name}}</div>
+    </div>
+    <div class="row">
+           <div class="small-12 columns">  Description : {{task.description}}</div>
+
+    </div>
+
+    <div class="row">
+      <div class="small-4 columns">Deadline : {{task.deadline | date : 'yyyy-MM-dd'}}</div>
+      <div class="small-4 columns">Assigned to: {{task.assignedUserName}}</div>
+      <div class="small-4 columns">Completed: {{task.completed}}</div>
+    </div>
+   
+ 
+
+  </div>
+
+</div>
